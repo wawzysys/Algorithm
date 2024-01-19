@@ -9,9 +9,11 @@
 
 #include <iostream>
 
-int main() {
+int main()
+{
     // 在标准输出中打印 "Hello, world!"
     std::cout << "Hello, world!" << std::endl;
+    // system("pause");
 }
 
 // 此文件编译运行将输出 "Hello, world!"。
