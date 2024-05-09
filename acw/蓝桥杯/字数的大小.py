@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/蓝桥杯/字数的大小.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -10,7 +10,7 @@ input=lambda:sys.stdin.readline().strip()
 from collections import *
 # from heapq import heapify,heappush,heappop
 # from bisect import bisect_left,bisect,insort
-# from math import inf,sqrt,gcd,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
+from math import *
 # from functools import cmp_to_key,reduce
 # from operator import or_,xor,add,mul
 # from itertools import permutations,combinations,accumulate
@@ -19,28 +19,26 @@ mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
-
-
-
-
-
+	n, m, k = mint()
+	g = defaultdict(list)
+	for i in range(1, n + 1):
+		for j in range((i - 1) * m + 2, i * m + 2):
+			if j <= n:
+				g[i].append(j)
+	# print(g)
+	ans = 0
+	def dfs(u):
+		res = 1
+		for i in g[u]:
+			res += dfs(i)
+		return res
+	print(dfs(k))
 
 
 
 if __name__ == '__main__':
-	#t=int(input())
-	#for _ in range(t):
-	#   solve()
+	t=int(input())
+	for _ in range(t):
+	  solve()
 
-	solve()
+	# solve()

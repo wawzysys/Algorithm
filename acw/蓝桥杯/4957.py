@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/蓝桥杯/4957.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -10,7 +10,7 @@ input=lambda:sys.stdin.readline().strip()
 from collections import *
 # from heapq import heapify,heappush,heappop
 # from bisect import bisect_left,bisect,insort
-# from math import inf,sqrt,gcd,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
+from math import *
 # from functools import cmp_to_key,reduce
 # from operator import or_,xor,add,mul
 # from itertools import permutations,combinations,accumulate
@@ -19,28 +19,42 @@ mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
+	N = sint()
+	# print(N)
+	g = [lint() for _ in range(N)]
+	for i in range(N):
+		g[i][1] += g[i][0]
+	# print(g)
+	st = [0] * (N)
+	ans = [0]
+	def dfs(u, last):
+		# print("u", u, st, last)
+		if u == N:
+			ans[0] = 1
+			return 
+		lastCopy = last
+		for i in range(N):
+			if st[i] == 1:
+				continue
+			if g[i][1] < last:
+				continue
+			st[i] = 1
+			dfs(u + 1, max(g[i][0], last) + g[i][2])
+			st[i] = 0
 
+	
+	dfs(0, -1)
 
-
-
-
+	if ans[0] == 1:
+		print("YES")
+	else:
+		print("NO")
 
 
 
 if __name__ == '__main__':
-	#t=int(input())
-	#for _ in range(t):
-	#   solve()
+	t=int(input())
+	for _ in range(t):
+	  solve()
 
-	solve()
+	# solve()

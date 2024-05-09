@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/蓝桥杯/841.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -10,7 +10,7 @@ input=lambda:sys.stdin.readline().strip()
 from collections import *
 # from heapq import heapify,heappush,heappop
 # from bisect import bisect_left,bisect,insort
-# from math import inf,sqrt,gcd,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
+from math import *
 # from functools import cmp_to_key,reduce
 # from operator import or_,xor,add,mul
 # from itertools import permutations,combinations,accumulate
@@ -19,24 +19,25 @@ mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
+	n, m = mint()
+	s =  list(' ' + input())
+	mod = 10**9 + 7
+	P = 1337
+	p = [1] * (n + 10)
+	h = [0] * (n + 10) 
+	for i in range(1, n + 1):
+		p[i] = p[i - 1] * P % mod
+		h[i] = h[i - 1] * P + ord(s[i])
+		h[i] %= mod
 
-
-
-
-
-
-
+	def find(l, r):
+		return (h[r] - h[l - 1] * p[r - l +  1]) % mod
+	for _ in range(m):
+		l1, r1, l2, r2 = mint()
+		if find(l1, r1) == find(l2, r2):
+			print("Yes")
+		else:
+			print("No")
 
 if __name__ == '__main__':
 	#t=int(input())

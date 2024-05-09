@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/蓝桥杯/843.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -10,7 +10,7 @@ input=lambda:sys.stdin.readline().strip()
 from collections import *
 # from heapq import heapify,heappush,heappop
 # from bisect import bisect_left,bisect,insort
-# from math import inf,sqrt,gcd,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
+from math import *
 # from functools import cmp_to_key,reduce
 # from operator import or_,xor,add,mul
 # from itertools import permutations,combinations,accumulate
@@ -20,20 +20,33 @@ lint = lambda: list(map(int, input().split()))
 
 def solve():
 	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
+	s = defaultdict(int)
+	h = defaultdict(int)
+	a = defaultdict(int)
+	b = defaultdict(int)
+	g = [['.' for i in range(n)] for j in range(n)] 
+	def dfs(u, x, y):
+		# print(u)
+		if u == n:
+			for i in range(n):
+				print(''.join(g[i]))
+			print()
+			return 
+		if y == n:
+			x += 1
+			y = 0
+		if x == n:
+			return
+		if not x in h and not y in s and  not  x + y in a and not  x - y + n in b:
+			h[x] = s[y] = a[x + y] = b[x - y + n] = 1
+			g[x][y] = 'Q'
+			dfs(u + 1, x + 1, 0)
+			g[x][y] = '.'
+			del h[x], s[y], a[x + y], b[x - y + n]
+		dfs(u, x, y + 1)
 
 
-
-
+	dfs(0, 0, 0)
 
 
 

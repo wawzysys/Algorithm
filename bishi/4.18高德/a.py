@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+# E:\0Code\Algorithm\bishi\4.18高德\a.py 2024-04-18 by 777
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -9,7 +9,7 @@ input=lambda:sys.stdin.readline().strip()
 # from copy import deepcopy
 from collections import *
 # from heapq import heapify,heappush,heappop
-# from bisect import bisect_left,bisect,insort
+from bisect import*
 # from math import inf,sqrt,gcd,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
 # from functools import cmp_to_key,reduce
 # from operator import or_,xor,add,mul
@@ -19,28 +19,28 @@ mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
-
-
-
-
-
-
-
-
+    n = int(input())
+    N = int(input())
+    a = list(map(int, input().split()))
+    r = max(a) * n * n
+    l = 0
+    def check(x):
+        ans = 0
+        for num in a:
+            ans += int((x // num) ** (0.5))
+        return ans >= n
+    
+    # print(bisect_right(range(10000000000), True, n, key=check))
+    while l <= r:
+        mid = (l + r) // 2
+        if check(mid):
+            r = mid - 1
+        else:
+            l = mid + 1    
+    print(l)
 if __name__ == '__main__':
-	#t=int(input())
-	#for _ in range(t):
-	#   solve()
+    t=int(input())
+    for _ in range(t):
+        solve()
 
-	solve()
+    # solve()

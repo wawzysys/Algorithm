@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/868.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -20,18 +20,24 @@ lint = lambda: list(map(int, input().split()))
 
 def solve():
 	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
-
-
+	prime = []
+	st = [False] * (n + 10)
+	phi = [0] * (n + 10)
+	phi[1] = 1
+	for i in range(2, n + 1):
+		if not st[i]:
+			prime.append(i)
+			phi[i] = i - 1
+		for p in prime:
+			if i * p > n:
+				break
+			st[i * p] = True
+			if i % p == 0:
+				phi[i * p] = p * phi[i]
+				break
+			else:
+				phi[i * p] = (p - 1) * phi[i]
+	print(sum(phi))
 
 
 

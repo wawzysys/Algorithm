@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/蓝桥杯/1221.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -10,7 +10,7 @@ input=lambda:sys.stdin.readline().strip()
 from collections import *
 # from heapq import heapify,heappush,heappop
 # from bisect import bisect_left,bisect,insort
-# from math import inf,sqrt,gcd,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
+from math import *
 # from functools import cmp_to_key,reduce
 # from operator import or_,xor,add,mul
 # from itertools import permutations,combinations,accumulate
@@ -20,16 +20,32 @@ lint = lambda: list(map(int, input().split()))
 
 def solve():
 	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
+	i = 0
+	p = []
+	c = 0
+	g = defaultdict(list)
+	while c * c <= n:
+		d = c
+		while  d * d + c * c <= n:
+			s = d * d + c * c
+			if not s in g:
+				g[s] = [c, d]
+			d += 1
+		c += 1
+	a = 0
+	while a * a <= n:
+		b = a
+		while a * a + b * b <= n:
+			s = n - a * a - b * b
+			if s in g:
+				print(a, b, g[s][0], g[s][1])
+				return 
+			b += 1
+
+		a += 1
+
+
+
 
 
 

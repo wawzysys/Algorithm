@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+# E:\0Code\Algorithm\acw\蓝桥杯\15届模拟赛\4.py 2024-04-12 by 777
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -19,17 +19,18 @@ mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
+    n = sint()
+    a = [0] + lint()
+    # print(a)
+    b = sorted(a)
+    # print(b)
+    n = len(a)
+    for i in range(1, n):
+        if b[i] != a[i] and b[i] != a[n - i]:
+            print("NO")
+            return
+    print("YES")
+    return  
 
 
 
@@ -39,8 +40,8 @@ def solve():
 
 
 if __name__ == '__main__':
-	#t=int(input())
-	#for _ in range(t):
-	#   solve()
+    #t=int(input())
+    #for _ in range(t):
+    #   solve()
 
-	solve()
+    solve()

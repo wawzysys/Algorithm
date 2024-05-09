@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/870_1.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -19,19 +19,26 @@ mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
+	mod = 10**9 +7
+	T = sint()
+	ans = 1
+	num = defaultdict(int)
+	for _ in range(T):
+		n = sint()
+		i = 2
+		while i * i <= n:
+			if n % i == 0:
+				tep = 0
+				while n % i == 0:
+					tep += 1
+					n //= i
+				num[i] += tep
 			i += 1
-		print(*sorted(ans))
-
-
+		if n > 1:
+			num[n] += 1
+	for p, k in num.items():
+		ans = ans *  (1 - pow(p, k + 1 , mod)) * pow(1 - p, mod - 2, mod)
+	print(ans % (10**9 + 7))
 
 
 
@@ -39,8 +46,8 @@ def solve():
 
 
 if __name__ == '__main__':
-	#t=int(input())
-	#for _ in range(t):
+	# t=int(input())
+	# for _ in range(t):
 	#   solve()
 
 	solve()

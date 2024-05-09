@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+# E:\0Code\Algorithm\acw\153\b.py 2024-04-27 by 777
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -19,28 +19,33 @@ mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
-
-
-
+    n = sint()
+    a = [lint() for _ in range(n)]
+    a.sort()
+    b = []
+    ans = 0
+    q = []
+    for l, r in a:
+        if not b or b[-1][1] < l:
+            b.append([l, r])
+        else:
+            q.append([l, r])
+    b = []
+    for l, r in q:
+        if not b or b[-1][1] < l:
+            b.append([l, r])
+        else:
+            print("NO")
+            return
+    print("YES")
 
 
 
 
 
 if __name__ == '__main__':
-	#t=int(input())
-	#for _ in range(t):
-	#   solve()
+    #t=int(input())
+    #for _ in range(t):
+    #   solve()
 
-	solve()
+    solve()

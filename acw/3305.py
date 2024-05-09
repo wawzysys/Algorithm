@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/3305.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -17,30 +17,36 @@ from collections import *
 sint = lambda: int(input())
 mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
-
+inf = float('inf')
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
-
-
-
-
-
-
-
-
+	n, m, k, t = mint()
+	d = [0] + lint()
+	g = defaultdict(list)
+	begin = lint()
+	vis = set()
+	dist = defaultdict(lambda : inf)
+	q = deque()
+	for x in begin:
+		q.append(x)
+		vis.add(x)
+		dist[x] = 0
+	for _ in range(k):
+		x, y, target = mint()
+		g[x].append((target, max(d[x], d[y]), y))
+		g[y].append((target, max(d[x], d[y]), x))
+	while q:
+		u = q.popleft()
+		vis.remove(u)
+		if u == t:
+			continue
+		for j, d, b in g[u]:
+			tep = max(dist[u], dist[b]) + d
+			if dist[j] > tep:
+				dist[j] = tep
+				if j not in vis:
+					vis.add(j)
+					q.append(j)
+	print(dist[t])
 if __name__ == '__main__':
-	#t=int(input())
-	#for _ in range(t):
-	#   solve()
 
 	solve()

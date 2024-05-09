@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/蓝桥杯/4964.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -10,7 +10,7 @@ input=lambda:sys.stdin.readline().strip()
 from collections import *
 # from heapq import heapify,heappush,heappop
 # from bisect import bisect_left,bisect,insort
-# from math import inf,sqrt,gcd,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
+from math import *
 # from functools import cmp_to_key,reduce
 # from operator import or_,xor,add,mul
 # from itertools import permutations,combinations,accumulate
@@ -19,17 +19,21 @@ mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
+	n, m, a, b = mint()
+	ans = 0
+	g = [lint() for _ in range(n)]
+	for i in range(a, n  + 1):
+		for j in range(b, m + 1):
+			i1 = i - a 
+			j1 = j - b 
+			mmax = -inf
+			mmin = inf
+			for k in range(i1, i):
+				for l in range(j1, j):
+					mmax = max(g[k][l], mmax)
+					mmin = min(g[k][l], mmin)
+			ans += mmax * mmin
+	print(ans)
 
 
 

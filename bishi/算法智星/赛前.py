@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+# E:\0Code\Algorithm\bishi\算法智星\赛前.py 2024-04-27 by 777
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -19,28 +19,12 @@ mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
-
-
-
-
-
-
-
+    n, k = mint()
+    ans = list(range(n + 1))
+    anss = ans[n - k:] + ans[1: n - k][::-1]
+    print(*anss)
 
 if __name__ == '__main__':
-	#t=int(input())
-	#for _ in range(t):
-	#   solve()
-
-	solve()
+    t=int(input())
+    for _ in range(t):
+      solve()

@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/211.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -10,30 +10,25 @@ input=lambda:sys.stdin.readline().strip()
 from collections import *
 # from heapq import heapify,heappush,heappop
 # from bisect import bisect_left,bisect,insort
-# from math import inf,sqrt,gcd,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
+# from math import inf,sqrt,gcd,lcm,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
 # from functools import cmp_to_key,reduce
 # from operator import or_,xor,add,mul
 # from itertools import permutations,combinations,accumulate
 sint = lambda: int(input())
 mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
-
+MOD = 10**4 + 7
+N = 1010
+c = [[0 for _ in range(N)] for _ in range(N)]
+for i in range(N):
+	for j in range(i + 1):
+		if j == 0: c[i][j] = 1
+		else: c[i][j] = (c[i - 1][j] + c[i - 1][j - 1]) % MOD 
 def solve():
-	n = sint()
-	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
+	a, b, k, n, m = mint()
+	ans = 0
 
-
-
-
+	print(pow(a, n, MOD)* pow(b, m, MOD) * c[k][n] % MOD)
 
 
 

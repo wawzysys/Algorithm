@@ -1,4 +1,4 @@
-#/E/0Code/Algorithm/acw/869.py
+#/E/0Code/Algorithm/acw/1375_1.py
 import sys
 sys.setrecursionlimit(100000)
 input=lambda:sys.stdin.readline().strip()
@@ -10,26 +10,52 @@ input=lambda:sys.stdin.readline().strip()
 from collections import *
 # from heapq import heapify,heappush,heappop
 # from bisect import bisect_left,bisect,insort
-# from math import inf,sqrt,gcd,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
+from math import inf,sqrt,gcd,lcm,pow,ceil,floor,log,log2,log10,pi,sin,cos,tan,asin,acos,atan
 # from functools import cmp_to_key,reduce
 # from operator import or_,xor,add,mul
 # from itertools import permutations,combinations,accumulate
 sint = lambda: int(input())
 mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
+def spfa(u, n, g) -> int:
+	q = deque()
+	q.append(u)
+	vis = set()
+	dist = defaultdict(lambda : inf)
+	vis.add(u)
+	dist[u] = 0
+	while q:
+		t = q.popleft()
+		vis.remove(t)
+		for j, d in g[t]:
+			if dist[j] > dist[t] + d:
+				dist[j] = dist[t] + d
+				if j not in vis:
+					vis.add(j)
+					q.append(j)
+	return dist[n]
 
 def solve():
 	n = sint()
+	g = defaultdict(list)
+	begin = set()
 	for _ in range(n):
-		a = sint()
-		ans = set()
-		i = 1
-		while i * i <= a:
-			if a % i == 0:
-				ans.add(i)
-				ans.add(a // i)
-			i += 1
-		print(*sorted(ans))
+		x, y, z = input().split()
+		z = int(z)
+		g[x].append((y, z))
+		g[y].append((x, z))
+		begin.add(x)
+		begin.add(y)
+	ans_d = inf
+	ans = -1
+	for x in begin:
+		if 'A' <= x < 'Z':
+			tep = spfa(x, g)
+			# print(tep)
+			if tep < ans_d:
+				ans_d = tep
+				ans = x
+	print(ans,ans_d)
 
 
 
