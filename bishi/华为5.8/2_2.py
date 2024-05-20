@@ -58,6 +58,5 @@ def solve():
             break
 
 solve()
-# print(capacity)
 
 

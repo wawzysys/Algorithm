@@ -1,8 +1,5 @@
 
-
-
 from collections import OrderedDict
-
 class LRUCache:
     def __init__(self, capacity: int):
         self.capacity = capacity
@@ -62,3 +59,4 @@ def solve():
         except:
             break
 solve()
+

@@ -91,7 +91,8 @@
         "variant": "cpp"
     },
     "java.project.sourcePaths": [
+        "bishi/4.17华为/zxs java",
         "acw",
-        "bishi/4.17华为/zxs java"
+        "bishi/华为od/5.12"
     ]
 }
