@@ -6,12 +6,21 @@ import time
 from PIL import Image
 from datetime import datetime
 
-HOST = '62.234.58.121'
+# HOST = '62.234.58.121'
+# USERNAME = 'root'
+# PASSWORD = 'wsh520Lihui@'
+# PORT = 22
+# REMOTE_PATH = '/usr/local/wzzz/'
+HOST = '8.147.235.221'
 USERNAME = 'root'
-PASSWORD = 'wsh520Lihui@'
+PASSWORD = '123qwe!QWE'
 PORT = 22
-REMOTE_PATH = '/usr/local/wzzz/'
-
+REMOTE_PATH = '/usr/local/jietu/'
+# Host = 8.147.235.221
+#   HostName = 8.147.235.221
+#   User = root
+#   Port = 22
+#   # password:123qwe!QWE
 def take_screenshot():
     screenshot = pyautogui.screenshot()
     screenshot.save(f"screenshot{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png")
