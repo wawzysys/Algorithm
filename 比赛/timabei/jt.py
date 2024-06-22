@@ -11,11 +11,16 @@ from datetime import datetime
 # PASSWORD = 'wsh520Lihui@'
 # PORT = 22
 # REMOTE_PATH = '/usr/local/wzzz/'
+# HOST = '8.147.235.221'
+# USERNAME = 'root'
+# PASSWORD = '123qwe!QWE'
+# PORT = 22
+# REMOTE_PATH = '/usr/local/jietu/'
 HOST = '8.147.235.221'
-USERNAME = 'root'
-PASSWORD = '123qwe!QWE'
+USERNAME = 'newuser'
+PASSWORD = '1'
 PORT = 22
-REMOTE_PATH = '/usr/local/jietu/'
+REMOTE_PATH = '/home/newuser/jie/'
 # Host = 8.147.235.221
 #   HostName = 8.147.235.221
 #   User = root
@@ -23,8 +28,6 @@ REMOTE_PATH = '/usr/local/jietu/'
 #   # password:123qwe!QWE
 def take_screenshot():
     screenshot = pyautogui.screenshot()
-    screenshot.save(f"screenshot{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png")
-    # print("Screenshot saved as screenshot.png")
     return screenshot
 def upload_to_server(image, filename):
 

@@ -29,20 +29,20 @@ n = int(input())
 a = list(map(int, input().split()))
 for i in range(n):
     a[i] = a[i] - 1
-ds = DSU(n)
+uf = DSU(n)
 for i in range(n):
-    ds.union(i, a[i])
+    uf.union(i, a[i])
 ans = -1
 for i in range(n):
-    ds.find(i)
-if ds.setCount == 1:
+    uf.find(i)
+if uf.setCount == 1:
     ans = n
 else:
     for i in range(n):
         tep = [max(i - 1, 0), min(i + 1, n - 1)]
         for j in tep:
-            if not ds.connected(i, j):
-                ans = max(ans, ds.size[ds.find(i)] + ds.size[ds.find(j)])
+            if not uf.connected(i, j):
+                ans = max(ans, uf.size[uf.find(i)] + uf.size[uf.find(j)])
             
 print(ans)      
 print(7 + 18 + 6 + 8 + 9 + 19 + 4 + 7 + 8 + 10 + 12 + 10 + 6 + 7 + 8 + 20 + 25 + 7 + 7 + 5 + 12 + 16 + 4 + 6 + 80)
