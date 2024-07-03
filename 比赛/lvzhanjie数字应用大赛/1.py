@@ -57,3 +57,21 @@ a = id(lis)
 lis += [4, 5]
 b = id(lis)
 print(a == b)
+
+tup = (1, 3, 2)
+a = id(tup)
+tup += (4, 5)
+b = id(tup)
+print(a == b)
+
+tup = (1, 3, 2)
+a = id(tup)
+tup = sorted(tup)
+b = id(tup)
+print(a == b)
+
+lis = [1, 3, 2]
+a = id(lis)
+lis = sorted(lis)
+b = id(lis)
+print(a == b)

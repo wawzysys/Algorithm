@@ -45,7 +45,7 @@ def add_random_variables_and_comments(file_path, output_path, comment_length=10,
                 # Insert a random variable declaration at the start of the main function or other key blocks
                 if 'int main()' in line or '}' in line:
                     # Choose random type
-                    for i in range(10):
+                    for i in range(5):
                         var_type = random.choice(['int', 'float', 'list'])
                         random_var_declaration = f"auto {random_var_name()} = {random_value(var_type)};\n"
                         file.write(random_var_declaration)
