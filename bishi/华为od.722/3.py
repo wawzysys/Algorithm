@@ -1,8 +1,7 @@
-#/E/0Code/Algorithm/acw/868.py
+# E:\0Code\Algorithm\bishi\华为od.722\3.py 2024-07-22 by 777
 import sys
-
 sys.setrecursionlimit(100000)
-input = lambda: sys.stdin.readline().strip()
+input=lambda:sys.stdin.readline().strip()
 # write=lambda x:sys.stdout.write(str(x)+'\n')
 # from decimal import Decimal
 # from datetime import datetime,timedelta
@@ -19,27 +18,12 @@ sint = lambda: int(input())
 mint = lambda: map(int, input().split())
 lint = lambda: list(map(int, input().split()))
 
-
 def solve():
-    n = sint()
-    prime = []
-    st = [False] * (n + 10)
-    phi = [0] * (n + 10)
-    phi[1] = 1
-    for i in range(2, n + 1):
-        if not st[i]:
-            prime.append(i)
-            phi[i] = i - 1
-        for p in prime:
-            if i * p > n:
-                break
-            st[i * p] = True
-            if i % p == 0:
-                phi[i * p] = p * phi[i]
-                break
-            else:
-                phi[i * p] = (p - 1) * phi[i]
-    print(sum(phi))
+    
+
+
+
+
 
 
 if __name__ == '__main__':
