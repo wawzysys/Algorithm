@@ -1,6 +1,6 @@
 {
     "files.associations": {
-        "ostream": "cpp",
+        "iostream": "cpp",
         "any": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -65,13 +65,13 @@
         "initializer_list": "cpp",
         "iomanip": "cpp",
         "iosfwd": "cpp",
-        "iostream": "cpp",
         "istream": "cpp",
         "latch": "cpp",
         "limits": "cpp",
         "mutex": "cpp",
         "new": "cpp",
         "numbers": "cpp",
+        "ostream": "cpp",
         "ranges": "cpp",
         "scoped_allocator": "cpp",
         "semaphore": "cpp",
@@ -89,10 +89,5 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp"
-    },
-    "java.project.sourcePaths": [
-        "bishi/4.17华为/zxs java",
-        "acw",
-        "bishi/华为od/5.12"
-    ]
+    }
 }
