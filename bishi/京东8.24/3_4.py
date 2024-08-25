@@ -231,7 +231,9 @@ class SortedList:
     def __repr__(self):
         """Return string representation of sorted list."""
         return 'SortedList({0})'.format(list(self))
-# from sortedcontainers import SortedList
+
+
+from sortedcontainers import SortedList
 
 def isValid(numSet):
     smallest = numSet[0]
