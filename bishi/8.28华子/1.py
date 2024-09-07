@@ -18,7 +18,3 @@ def mouse_hole(nums):
     return ans
 input_sequence = list(map(int, input().split()))  # 输入: 3 2 1 4 5 6 7
 print(*mouse_hole(input_sequence))  # 输出: [3, 2, 5, 4, 3, 2, 1]
-
-# a = list(map(int, input().split()))
-# a.sort()
-# print(*a)
