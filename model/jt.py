@@ -5,9 +5,9 @@ from io import BytesIO
 import time
 from PIL import Image
 from datetime import datetime
-HOST = '8.147.235.221'
+HOST = '47.121.221.247'
 USERNAME = 'newuser'
-PASSWORD = 'qwbnrrzd'
+PASSWORD = '1'
 PORT = 22
 REMOTE_PATH = '/home/newuser/jie/'
 def take_screenshot():
