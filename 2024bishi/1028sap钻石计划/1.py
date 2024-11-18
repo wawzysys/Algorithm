@@ -13,7 +13,6 @@ def solve():
             xi, yi = x[i], y[i]
             xj, yj = x[j], y[j]
             if xi != xj:
-
                 k = (yj - yi) / (xj - xi)
                 if k > m:
                     m = k
