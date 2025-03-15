@@ -1,3 +1,5 @@
 shumo/*.exe
 *.exe
 .cph
+tests
+*.class
